@@ -47,11 +47,11 @@ jobs:
           make build-${{ matrix.platform }} \
             GOOS=${{ matrix.platform }} \
             GOARCH=${{ matrix.arch }} \
-            BIN_DIR=./dist/${{ matrix.platform }}-${{ matrix.arch }}
+            BIN_DIR=./dist
           
-          cd ./dist/${{ matrix.platform }}-${{ matrix.arch }}
+          cd ./dist
           ls -al
-          mv okx-nft-metadata-convert${{ matrix.ext }} okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}${{ matrix.ext }}
+          mv okx-nft-metadata-convert_${{ matrix.platform }}_${{ matrix.arch }}${{ matrix.ext }} okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}${{ matrix.ext }}
           cd ../..
 
       - name: Upload artifacts
