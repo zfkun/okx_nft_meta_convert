@@ -88,4 +88,4 @@ jobs:
             - Go Version: ${{ steps.version.outputs.GO_VERSION }}
             - Build Time: ${{ steps.version.outputs.BUILD_TIME }}
           files: |
-            bin/okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-*
+            bin/**/*
