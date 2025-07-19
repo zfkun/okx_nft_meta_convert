@@ -1,5 +1,5 @@
 NAME=okx-nft-metadata-convert
-BUILD_VERSION=`cat build.go | grep BuildVersion | grep -v "Apache" | awk -F '=' '{print $2}' | awk -F '"' '{print $2}'`
+BUILD_VERSION=$(shell cat build.go | grep BuildVersion | grep -v "Apache" | awk -F '=' '{print $$2}' | awk -F '"' '{print $$2}')
 MODULE_NAME=main
 
 BIN_DIR=./bin
