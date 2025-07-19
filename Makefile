@@ -26,7 +26,10 @@ build-linux: prepare
 
 .PHONY: build-windows
 build-windows: prepare
-	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_windows_amd64 *.go
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_windows_amd64.exe *.go
+
+	echo "Embedding manifest..."
+  mt -manifest okx-nft-metadata-convert.exe.manifest -outputresource:$(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_windows_amd64.exe;1
 
 .PHONY: build-darwin
 build-darwin: prepare
@@ -34,7 +37,7 @@ build-darwin: prepare
 
 .PHONY: build-darwin-arm64
 build-darwin-arm64: prepare
-	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME_v$(BUILD_VERSION))_darwin_arm64 *.go
+	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_darwin_arm64 *.go
 
 .PHONY: run
 run:
