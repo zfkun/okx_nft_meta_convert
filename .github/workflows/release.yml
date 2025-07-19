@@ -47,13 +47,13 @@ jobs:
           else
             make build-${{ matrix.platform }}-${{ matrix.arch }}  # arm64 带后缀
           fi
-          ls -al
+          ls -al ./bin
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}
-          path: ./dist/*
+          path: ./bin/*
 
   release:
     name: Create Release
@@ -71,7 +71,7 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ./dist
+          path: ./bin
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -86,4 +86,4 @@ jobs:
             - Go Version: $(go version)
             - Build Time: $(date)
           files: |
-            dist/**/*
+            bin/**/*
