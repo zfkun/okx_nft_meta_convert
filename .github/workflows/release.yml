@@ -52,7 +52,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}
+          name: okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}${{ matrix.ext }}
           path: ./bin/*
 
   release:
@@ -67,6 +67,8 @@ jobs:
         id: version
         run: |
           echo "VERSION=$(cat build.go | grep BuildVersion | grep -v "Apache" | awk -F '=' '{print $2}' | awk -F '"' '{print $2}')" >> $GITHUB_OUTPUT
+          echo "GO_VERSION=$(go version)" >> $GITHUB_OUTPUT
+          echo "BUILD_TIME=$(date)" >> $GITHUB_OUTPUT
 
       - name: Download all artifacts
         uses: actions/download-artifact@v4
@@ -83,7 +85,7 @@ jobs:
             Auto-generated release for version ${{ steps.version.outputs.VERSION }}
             
             **Build Info**
-            - Go Version: $(go version)
-            - Build Time: $(date)
+            - Go Version: ${{ steps.version.outputs.GO_VERSION }}
+            - Build Time: ${{ steps.version.outputs.BUILD_TIME }}
           files: |
-            bin/**/*
+            bin/okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-*
