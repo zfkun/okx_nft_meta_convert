@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux, windows, darwin]
-        arch: [amd64, arm64]
         include:
           - platform: windows
             arch: amd64
@@ -44,7 +42,11 @@ jobs:
 
       - name: Build
         run: |
-          make build-${{ matrix.platform }}-${{ matrix.arch }}
+          if [ "${{ matrix.arch }}" = "amd64" ]; then
+            make build-${{ matrix.platform }}  # amd64 不带后缀
+          else
+            make build-${{ matrix.platform }}-${{ matrix.arch }}  # arm64 带后缀
+          fi
           ls -al
 
       - name: Upload artifacts
