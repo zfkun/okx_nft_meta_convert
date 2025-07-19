@@ -37,3 +37,6 @@ go.work.sum
 # Build
 dist/
 bin/
+
+# Examples
+_example/*.csv
