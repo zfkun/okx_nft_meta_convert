@@ -1,0 +1,96 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*' # 触发条件：推送v开头的tag
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [linux, windows, darwin]
+        arch: [amd64, arm64]
+        include:
+          - platform: windows
+            arch: amd64
+            ext: .exe
+          - platform: linux
+            arch: amd64
+            ext: ""
+          - platform: linux
+            arch: arm64
+            ext: ""
+          - platform: darwin
+            arch: amd64
+            ext: ""
+          - platform: darwin
+            arch: arm64
+            ext: ""
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 获取完整git历史
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.24' # 指定您的Go版本
+
+      - name: Get version
+        id: version
+        run: |
+          echo "VERSION=$(cat build.go | grep BuildVersion | grep -v "Apache" | awk -F '=' '{print $2}' | awk -F '"' '{print $2}')" >> $GITHUB_OUTPUT
+
+      - name: Build
+        run: |
+          make build-${{ matrix.platform }} \
+            GOOS=${{ matrix.platform }} \
+            GOARCH=${{ matrix.arch }} \
+            BIN_DIR=./dist/${{ matrix.platform }}-${{ matrix.arch }}
+          
+          cd ./dist/${{ matrix.platform }}-${{ matrix.arch }}
+          mv okx-nft-metadata-convert${{ matrix.ext }} okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}${{ matrix.ext }}
+          cd ../..
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}
+          path: ./dist/${{ matrix.platform }}-${{ matrix.arch }}/*
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: version
+        run: |
+          echo "VERSION=$(cat build.go | grep BuildVersion | grep -v "Apache" | awk -F '=' '{print $2}' | awk -F '"' '{print $2}')" >> $GITHUB_OUTPUT
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: v${{ steps.version.outputs.VERSION }}
+          body: |
+            ### Release Notes
+            Auto-generated release for version ${{ steps.version.outputs.VERSION }}
+            
+            **Build Info**
+            - Go Version: $(go version)
+            - Build Time: $(date)
+          files: |
+            dist/**/*

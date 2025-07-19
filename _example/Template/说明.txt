@@ -1,0 +1,39 @@
+# OKX NFT Studio - Instructions for Metadata upload
+
+## Metadata upload instructions
+
+Please use the provided table to batch upload the corresponding content for NFTs. Refer to the example for image names and adhere to the table template. Please note:
+
+- The name of the media file should be matched in the column 'file_name' in the metadata template file.
+- The tokenID will be set based on the order of submission.
+- Make sure all mandatory(*) fields are filled in and match correctly
+
+Mandatory columns are:
+
+- 'name' - name of your NFT (max 200 characters)
+- 'file_name' - name of your submitted media file, make sure they are matched in correctly
+
+Optional columns are:
+
+- 'description' - description of your NFT (max 1000 characters)
+- 'attributes' - You can add trait columns, which must follow the convention 'attributes[name_of_trait]'. For example, if you wanted eye colour to be a trait, you can have a column named 'attributes[eye colour]', then fill in the values for each NFT attribute below each line
+
+# OKX NFT Studio - NFT 元数据上传说明
+
+## NFT元数据上传指南
+
+通过表格来批量上传NFT对应内容，请参考示例中的图片名称及表格模板，请注意
+
+- 媒体文件的名称应与metadata模板文件中的'file_name'列相匹配。
+- TokenID将根据提交顺序进行分配。
+- 确保所有必填(*)字段都已填写并正确匹配。
+
+必填列:
+
+- 'name' - 你的NFT名称（最多200个字符）
+- 'file_name' - 你提交的媒体文件的名称；确保它们正确匹配。
+
+可选填列:
+
+- 'description' - 你的NFT描述（最多1000个字符）
+- 'attributes' - 你需要添加并遵循约定 'attributes[特征名称]' 的特征列。例如，如果你想将眼睛颜色作为特征，则可以有一个名为 'attributes[眼睛颜色]' 的列，在下方每行填入每个NFT的属性值

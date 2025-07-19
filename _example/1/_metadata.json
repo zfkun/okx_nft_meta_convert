@@ -1,0 +1,112 @@
+[
+  {
+    "name": "my test nft #1",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/1.png",
+    "dna": "",
+    "edition": 1,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "body",
+        "value": "a"
+      },
+      {
+        "trait_type": "eye",
+        "value": "big"
+      },
+      {
+        "trait_type": "mouth",
+        "value": "m1"
+      }
+    ]
+  },
+  {
+    "name": "my test nft #2",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/2.png",
+    "dna": "",
+    "edition": 2,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "body",
+        "value": "a"
+      },
+      {
+        "trait_type": "eye",
+        "value": "small"
+      },
+      {
+        "trait_type": "mouth",
+        "value": "m2"
+      }
+    ]
+  },
+  {
+    "name": "my test nft #3",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/3.png",
+    "dna": "",
+    "edition": 3,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "body",
+        "value": "b"
+      },
+      {
+        "trait_type": "eye",
+        "value": "small"
+      },
+      {
+        "trait_type": "mouth",
+        "value": "m3"
+      }
+    ]
+  },
+  {
+    "name": "my test nft #4",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/4.png",
+    "dna": "",
+    "edition": 4,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "body",
+        "value": "c"
+      },
+      {
+        "trait_type": "eye",
+        "value": "small"
+      },
+      {
+        "trait_type": "mouth",
+        "value": "m1"
+      }
+    ]
+  },
+  {
+    "name": "my test nft #5",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/5.png",
+    "dna": "",
+    "edition": 5,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "body",
+        "value": "c"
+      },
+      {
+        "trait_type": "eye",
+        "value": "big"
+      },
+      {
+        "trait_type": "mouth",
+        "value": "m1"
+      }
+    ]
+  }
+]
