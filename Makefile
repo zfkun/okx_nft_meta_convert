@@ -24,9 +24,18 @@ build: prepare
 build-linux: prepare
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_linux_amd64 *.go
 
+.PHONY: build-darwin
+build-darwin: prepare
+	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_darwin_amd64 *.go
+
+.PHONY: build-darwin-arm64
+build-darwin-arm64: prepare
+	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_darwin_arm64 *.go
+
 .PHONY: build-windows
 build-windows: prepare
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_windows_amd64 *.go
+
 
 .PHONY: run
 run:
