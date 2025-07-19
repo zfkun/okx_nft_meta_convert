@@ -50,6 +50,7 @@ jobs:
             BIN_DIR=./dist/${{ matrix.platform }}-${{ matrix.arch }}
           
           cd ./dist/${{ matrix.platform }}-${{ matrix.arch }}
+          ls -al
           mv okx-nft-metadata-convert${{ matrix.ext }} okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}${{ matrix.ext }}
           cd ../..
 
