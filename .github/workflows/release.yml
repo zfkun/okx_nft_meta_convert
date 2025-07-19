@@ -44,21 +44,14 @@ jobs:
 
       - name: Build
         run: |
-          make build-${{ matrix.platform }} \
-            GOOS=${{ matrix.platform }} \
-            GOARCH=${{ matrix.arch }} \
-            BIN_DIR=./dist
-          
-          cd ./dist
+          make build-${{ matrix.platform }}-${{ matrix.arch }}
           ls -al
-          mv okx-nft-metadata-convert_${{ matrix.platform }}_${{ matrix.arch }}${{ matrix.ext }} okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}${{ matrix.ext }}
-          cd ../..
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: okx-nft-metadata-convert-${{ steps.version.outputs.VERSION }}-${{ matrix.platform }}-${{ matrix.arch }}
-          path: ./dist/${{ matrix.platform }}-${{ matrix.arch }}/*
+          path: ./dist/*
 
   release:
     name: Create Release
