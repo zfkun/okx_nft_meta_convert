@@ -2,7 +2,7 @@ package main
 
 var (
 	BuildName      string
-	BuildVersion   = "1.0.0"
+	BuildVersion   = "1.0.3"
 	BuildUser      string
 	BuildTime      string
 	BuildGitCommit string
