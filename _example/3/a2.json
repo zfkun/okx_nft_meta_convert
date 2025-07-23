@@ -1,0 +1,30 @@
+{
+  "name": "my test nft #101",
+  "description": "my test nft",
+  "image": "ipfs://NewUriToReplace/101.png",
+  "dna": "",
+  "edition": 101,
+  "date": 0,
+  "attributes": [
+    {
+      "trait_type": "body",
+      "value": "a"
+    },
+    {
+      "trait_type": "eye",
+      "value": "small"
+    },
+    {
+      "trait_type": "mouth",
+      "value": "m3"
+    },
+    {
+      "trait_type": "clothing",
+      "value": "hoodie"
+    },
+    {
+      "trait_type": "headwear",
+      "value": "noheadwear"
+    }
+  ]
+}

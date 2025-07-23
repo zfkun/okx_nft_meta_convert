@@ -1,0 +1,30 @@
+{
+  "name": "my test nft #3",
+  "description": "my test nft",
+  "image": "ipfs://NewUriToReplace/3.png",
+  "dna": "",
+  "edition": 3,
+  "date": 0,
+  "attributes": [
+    {
+      "trait_type": "body",
+      "value": "c"
+    },
+    {
+      "trait_type": "eye",
+      "value": "big"
+    },
+    {
+      "trait_type": "mouth",
+      "value": "m4"
+    },
+    {
+      "trait_type": "clothing",
+      "value": "nothing"
+    },
+    {
+      "trait_type": "headwear",
+      "value": "nothing"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "my test nft #89",
+  "description": "my test nft",
+  "image": "ipfs://NewUriToReplace/89.png",
+  "dna": "",
+  "edition": 89,
+  "date": 0,
+  "attributes": [
+    {
+      "trait_type": "body",
+      "value": "d"
+    },
+    {
+      "trait_type": "eye",
+      "value": "big"
+    },
+    {
+      "trait_type": "mouth",
+      "value": "m6"
+    },
+    {
+      "trait_type": "clothing",
+      "value": "tshirt"
+    },
+    {
+      "trait_type": "headwear",
+      "value": "hat"
+    }
+  ]
+}

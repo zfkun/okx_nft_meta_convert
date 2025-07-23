@@ -52,5 +52,59 @@
         "value": "5"
       }
     ]
+  },
+  {
+    "name": "my test nft #4",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/4.png",
+    "dna": "",
+    "edition": 4,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "region",
+        "value": "jp"
+      },
+      {
+        "trait_type": "custom",
+        "value": "a1"
+      }
+    ]
+  },
+  {
+    "name": "my test nft #5",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/5.png",
+    "dna": "",
+    "edition": 5,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "region",
+        "value": "jp"
+      },
+      {
+        "trait_type": "custom",
+        "value": "a2"
+      }
+    ]
+  },
+  {
+    "name": "my test nft #6",
+    "description": "my test nft",
+    "image": "ipfs://NewUriToReplace/6.png",
+    "dna": "",
+    "edition": 6,
+    "date": 0,
+    "attributes": [
+      {
+        "trait_type": "region",
+        "value": "fr"
+      },
+      {
+        "trait_type": "custom",
+        "value": "a3"
+      }
+    ]
   }
 ]
