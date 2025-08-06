@@ -1,4 +1,5 @@
 NAME=okx-nft-metadata-convert
+RENAME_NAME=okx-nft-metadata-rename
 BUILD_VERSION=$(shell cat build.go | grep BuildVersion | grep -v "Apache" | awk -F '=' '{print $$2}' | awk -F '"' '{print $$2}')
 MODULE_NAME=main
 
@@ -29,7 +30,7 @@ build-windows: prepare
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_windows_amd64.exe *.go
 
 	echo "Embedding manifest..."
-  mt -manifest okx-nft-metadata-convert.exe.manifest -outputresource:$(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_windows_amd64.exe;1
+  mt -manifest $(RENAME_NAME).exe.manifest -outputresource:$(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_windows_amd64.exe;1
 
 .PHONY: build-darwin
 build-darwin: prepare
@@ -38,6 +39,30 @@ build-darwin: prepare
 .PHONY: build-darwin-arm64
 build-darwin-arm64: prepare
 	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags "-s -w ${LDFLAGS}" -v -o $(BIN_DIR)/$(NAME)_v$(BUILD_VERSION)_darwin_arm64 *.go
+
+.PHONY: build-rename
+build-rename: prepare
+	go build -ldflags "-s -w" -o $(BIN_DIR)/$(RENAME_NAME) ./cmd/rename/*.go
+
+.PHONY: build-rename-windows
+build-rename-windows: prepare
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o $(BIN_DIR)/$(RENAME_NAME)_v$(BUILD_VERSION)_windows_amd64.exe ./cmd/rename/*.go
+	
+	echo "Embedding manifest..."
+  mt -manifest $(RENAME_NAME).exe.manifest -outputresource:$(BIN_DIR)/$(RENAME_NAME)_v$(BUILD_VERSION)_windows_amd64.exe;1
+
+.PHONY: build-rename-linux
+build-rename-linux: prepare
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o $(BIN_DIR)/$(RENAME_NAME)_v$(BUILD_VERSION)_linux_amd64 ./cmd/rename/*.go
+
+.PHONY: build-rename-darwin
+build-rename-darwin: prepare
+	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o $(BIN_DIR)/$(RENAME_NAME)_v$(BUILD_VERSION)_darwin_amd64 ./cmd/rename/*.go
+
+.PHONY: build-rename-darwin-arm64
+build-rename-darwin-arm64: prepare
+	CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags "-s -w" -o $(BIN_DIR)/$(RENAME_NAME)_v$(BUILD_VERSION)_darwin_arm64 ./cmd/rename/*.go
+
 
 .PHONY: run
 run:
