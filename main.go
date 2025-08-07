@@ -261,7 +261,10 @@ func LoadConfig(name string) (*Config, error) {
 		return nil, fmt.Errorf("无法读取配置文件: %v", err)
 	}
 
-	lines := strings.Split(string(data), "\n")
+	// 处理UTF-8 BOM
+	content := strings.TrimPrefix(string(data), "\xEF\xBB\xBF")
+
+	lines := strings.Split(content, "\n")
 
 	var currentSection string
 	config := &Config{}

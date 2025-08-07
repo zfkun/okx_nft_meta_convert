@@ -40,4 +40,5 @@ bin/
 
 # Examples
 _example/*.csv
-rename/
+_example/rename/
+./rename/
